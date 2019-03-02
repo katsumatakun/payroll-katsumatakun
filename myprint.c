@@ -2,9 +2,14 @@
 #include "linked.h"
 #include "emp_rec.h"
 #include "myprint.h"
-typedef struct emp *EmpPtr;
 typedef struct linked *nodeType;
 
+/*
+  This function will accept a pointer of nodeType
+  that is the head of a linked list and will print
+  out each employee's payment record stored in each
+  node of the list.
+*/
 void print_emp_data(nodeType pt){
   nodeType iterator = pt;
   while(iterator != NULL){

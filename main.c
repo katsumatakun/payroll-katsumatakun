@@ -8,8 +8,13 @@
 typedef struct emp *EmpPtr;
 typedef struct linked *nodeType;
 
+/*
+  This program reads a structured binary file of eployee records
+  that is unsorted and print out each employee's bi-weekly net pay
+  and total payment in descending alphabetical order.
+*/
 int main(int argc, char* argv[]) {
-  int num = 1;
+  int num;
   nodeType head = NULL;
   head = (nodeType) malloc(sizeof(struct linked));
   if(head == NULL){
@@ -29,6 +34,7 @@ int main(int argc, char* argv[]) {
 
   q = (EmpPtr) malloc(sizeof(struct emp) * 100);
   num =fread(q, sizeof(struct emp), 100, fp);
+  
   for (int x = 0; x < num; x++){
     insertData(head, (q+x));
   }
