@@ -6,6 +6,14 @@
 #include "insert.h"
 typedef struct emp *EmpPtr;
 typedef struct linked *nodeType;
+
+/*
+  This function will accept a pointer of nodeType that is the head of a linked list
+  and a pointer of EmpPtr that points to an employee's information.
+  Then the information being pointed by q is going to be stored in a node
+  of the linked List so that the list can have employee's information in decending
+  alphabetical order. 
+*/
 void insertData(nodeType head, EmpPtr q){
   //printf("aaaa %s\n", q->first_name);
   nodeType p;
