@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "emp_rec.h"
 #include "linked.h"
 #include "insert.h"
 #include "myprint.h"
+#include "delete_list.h"
 typedef struct emp *EmpPtr;
 typedef struct linked *nodeType;
 
@@ -18,25 +18,22 @@ int main(int argc, char* argv[]) {
   EmpPtr q;
   FILE *fp;
 	if (argc != 2) {
-		printf("オープンファイル名を指定してください\n");
-		exit(EXIT_FAILURE);
+		printf("usage: progam name, binary file name\n");
+		return -1;
 	}
 
 	if((fp = fopen(argv[1], "rb")) == NULL ) {
-		printf("ファイルオープンエラー\n");
-		exit(EXIT_FAILURE);
+		printf("Input file not open\n");
+		return -1;
 	}
 
   q = (EmpPtr) malloc(sizeof(struct emp) * 100);
   num =fread(q, sizeof(struct emp), 100, fp);
-  printf("num=%d\n", num);
-  //printf("%s\n", q->first_name);
-
   for (int x = 0; x < num; x++){
     insertData(head, (q+x));
   }
   print_emp_data(head);
   free(q);
-  free(head);
+  delete_list(head);
   return 0;
 }
