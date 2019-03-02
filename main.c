@@ -2,17 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include "emp_rec.h"
+#include "linked.h"
+#include "insert.h"
 typedef struct emp *EmpPtr;
-struct linked {
-  struct linked* front;
-  struct linked* back;
-  EmpPtr ptr;
-};
 typedef struct linked *nodeType;
 
 int main(int argc, char* argv[]) {
   int num = 1;
-  nodeType p;
+
+  nodeType pt = NULL;
   EmpPtr q;
   FILE *fp;
 	if (argc != 2) {
@@ -27,27 +25,28 @@ int main(int argc, char* argv[]) {
 
   q = (EmpPtr) malloc(sizeof(struct emp) * 100);
   num =fread(q, sizeof(struct emp), 100, fp);
-  printf("%d\n", num);
-  for (int i = 0; i < num; i++)
-  printf("fread: %s %s %s \n", (q+i) -> first_name, (q+i)->last_name, (q+i)-> addr);
+  printf("num=%d\n", num);
 
-  //printf("%d\n",strcmp(q -> first_name, (q+1) -> first_name));
-
-  p = (nodeType) malloc(sizeof(struct linked));
-  p->ptr = q;
-  (p->front) = NULL;
-  (p->back) = NULL;
-  for (int i = 0; i < num-1; i++){
-  nodeType pt = (nodeType) malloc(sizeof(struct linked));
-  (p->back) = pt;
-  (pt->front) = p;
-  q = q+1;
-  (pt->ptr) = q;
-  printf("%s\n", (pt->ptr)->first_name);
-  (pt->back) = NULL;
-  free(pt);
-}
+  for (int x = 0; x < num; x++){
+    insertData(pt, (q+x));
+  }
   free(q);
-  free(p);
+  nodeType iterator = (nodeType) malloc(sizeof(struct linked));
+  iterator = pt;
+  for (int i = 0; i < num; i++)
+    {
+      printf("fread: %s %s %s \n", (iterator->ptr)-> first_name, (iterator->ptr)->last_name, (iterator->ptr)->addr);
+    }
   return 0;
 }
+
+
+
+/*p = (nodeType) malloc(sizeof(struct linked)*100);
+num =fread(p, sizeof(struct linked), 100, fp);
+for (int i = 0; i < num; i++)
+printf("fread: %s %s %s \n", ((p+i)->ptr)->first_name, ((p+i)->ptr)->last_name, ((p+i)->ptr)->addr);*/
+
+
+
+//printf("%d\n",strcmp(q -> first_name, (q+1) -> first_name));
