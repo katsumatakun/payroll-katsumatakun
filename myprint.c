@@ -14,6 +14,5 @@ void print_emp_data(nodeType pt){
   while(iterator != NULL){
   printf("fread: %s %s %s \n", (iterator->ptr)-> first_name, (iterator->ptr)->last_name, (iterator->ptr)->addr);
   iterator = iterator->back;
-}
-  //free(iterator);
+  }
 }

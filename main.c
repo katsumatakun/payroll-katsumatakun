@@ -40,14 +40,3 @@ int main(int argc, char* argv[]) {
   free(head);
   return 0;
 }
-
-
-
-/*p = (nodeType) malloc(sizeof(struct linked)*100);
-num =fread(p, sizeof(struct linked), 100, fp);
-for (int i = 0; i < num; i++)
-printf("fread: %s %s %s \n", ((p+i)->ptr)->first_name, ((p+i)->ptr)->last_name, ((p+i)->ptr)->addr);*/
-
-
-
-//printf("%d\n",strcmp(q -> first_name, (q+1) -> first_name));
