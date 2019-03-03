@@ -32,12 +32,15 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 
-  q = (EmpPtr) malloc(sizeof(struct emp) * 100);
-  num =fread(q, sizeof(struct emp), 100, fp);
-  
-  for (int x = 0; x < num; x++){
-    insertData(head, (q+x));
-  }
+
+  while(num != 0){
+  q = (EmpPtr) malloc(sizeof(struct emp));
+  num =fread(q, sizeof(struct emp), 1, fp);
+  //printf("%d\n", num);
+  insertData(head, (q));
+}
+
+
   print_emp_data(head);
   free(q);
   delete_list(head);
