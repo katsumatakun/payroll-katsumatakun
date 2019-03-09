@@ -18,10 +18,13 @@ void print_emp_data(nodeType pt){
   float total_insurance = 0;
   float total_net_wage = 0;
   while(iterator != NULL){
+    //find each value to be printed
     float bi_weekly_pay = (iterator->ptr)->monthly_salary *12/26;
     float fed_tax = bi_weekly_pay * ((iterator->ptr)->fed_tax_percent /100);
     float state_tax = bi_weekly_pay * ((iterator->ptr)->state_tax_percent /100);
     float medical = ((iterator->ptr)->total_medical * 12/26);
+
+    //increment totals
     total_bi_weekly+=bi_weekly_pay;
     total_fed_tax+=fed_tax;
     total_state_tax+=state_tax;
