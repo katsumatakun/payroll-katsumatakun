@@ -11,7 +11,7 @@
   of the linked List so that the list can have employee's information in decending
   alphabetical order.
 */
-void insertData(nodeType head, EmpPtr q){
+int insertData(nodeType head, EmpPtr q){
   nodeType p;  //points to new node
   nodeType p3; //points to one front node of new node
   nodeType p2; //points to one behind node of new node
@@ -25,7 +25,11 @@ void insertData(nodeType head, EmpPtr q){
 
   else{
     //dainamically allocation
+    //allocation failure will finish function execution
     p = (nodeType) malloc(sizeof(struct linked));
+    if(p == NULL){
+      return -1;
+    }
     p->ptr = q;
     p2 = head;
 
@@ -41,7 +45,7 @@ void insertData(nodeType head, EmpPtr q){
     }
 
 
-    //insert the bery end of the linked list
+    //insert the very end of the linked list
     if(p2 == NULL){
       p3-> back = p;
       p-> back = NULL;
@@ -65,4 +69,5 @@ void insertData(nodeType head, EmpPtr q){
       p->back = p2;
     }
   }
+  return 0;
 }
