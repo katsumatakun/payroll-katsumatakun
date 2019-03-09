@@ -5,6 +5,7 @@
 #include "insert.h"
 #include "myprint.h"
 #include "delete_list.h"
+#include "print_rawdata.h"
 typedef struct emp *EmpPtr;
 typedef struct linked *nodeType;
 
@@ -32,12 +33,14 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 
-
-  while(num != 0){
   q = (EmpPtr) malloc(sizeof(struct emp));
   num =fread(q, sizeof(struct emp), 1, fp);
-  //printf("%d\n", num);
-  insertData(head, (q));
+
+  while(num != 0){
+    print_raw_data(q);
+    insertData(head, q);
+    q = (EmpPtr) malloc(sizeof(struct emp));
+    num =fread(q, sizeof(struct emp), 1, fp);
 }
 
 
