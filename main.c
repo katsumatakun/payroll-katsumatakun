@@ -4,7 +4,6 @@
 #include "linked.h"
 #include "insert.h"
 #include "myprint.h"
-#include "delete_list.h"
 #include "print_rawdata.h"
 typedef struct emp *EmpPtr;
 typedef struct linked *nodeType;
