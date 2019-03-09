@@ -4,8 +4,8 @@
 #include "linked.h"
 #include "emp_rec.h"
 #include "insert.h"
-typedef struct emp *EmpPtr;
-typedef struct linked *nodeType;
+//typedef struct emp *EmpPtr;
+//typedef struct linked *nodeType;
 
 /*
   This function will accept a pointer of nodeType that is the head of a linked list

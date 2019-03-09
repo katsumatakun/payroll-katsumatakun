@@ -5,8 +5,8 @@
 #include "insert.h"
 #include "myprint.h"
 #include "print_rawdata.h"
-typedef struct emp *EmpPtr;
-typedef struct linked *nodeType;
+//typedef struct emp *EmpPtr;
+//typedef struct linked *nodeType;
 
 /*
   This program reads a structured binary file of eployee records

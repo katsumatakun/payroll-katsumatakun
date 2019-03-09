@@ -12,3 +12,4 @@ struct emp {
   float total_medical;
   char status;
 };
+typedef struct emp *EmpPtr;

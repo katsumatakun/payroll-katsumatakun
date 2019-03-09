@@ -3,3 +3,4 @@ struct linked {
   struct linked* back;
   struct emp* ptr;
 };
+typedef struct linked *nodeType;

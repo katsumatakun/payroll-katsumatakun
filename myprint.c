@@ -2,7 +2,7 @@
 #include "linked.h"
 #include "emp_rec.h"
 #include "myprint.h"
-typedef struct linked *nodeType;
+//typedef struct linked *nodeType;
 
 /*
   This function will accept a pointer of nodeType
