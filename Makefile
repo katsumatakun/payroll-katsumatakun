@@ -1,7 +1,7 @@
 
-OBJ = main.o insert.o myprint.o delete_list.o
+OBJ = main.o insert.o myprint.o print_rawdata.o
 STRUCTS = linked.h emp_rec.h
-HEADERS = insert.h myprint.h delete_list.h
+HEADERS = insert.h myprint.h print_rawdata.h
 all: main
 
 main: $(OBJ)
@@ -16,8 +16,8 @@ insert.o: insert.c insert.h $(STRUCTS)
 myprint.o: myprint.c myprint.h $(STRUCTS)
 	gcc -c myprint.c
 
-delete_list.o: delete_list.c delete_list.h $(STRUCTS)
-	gcc -c delete_list.c
+print_rawdata.o: print_rawdata.c print_rawdata.h $(STRUCTS)
+	gcc -c print_rawdata.c
 
 clean:
 	rm -rf main *.o

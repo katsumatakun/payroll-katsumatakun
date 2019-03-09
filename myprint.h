@@ -1,1 +1,1 @@
-void print_emp_data(struct linked* pt);
+void print_emp_data(struct linked*);
