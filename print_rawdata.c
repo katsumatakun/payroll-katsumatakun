@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include "linked.h"
 #include "emp_rec.h"
 #include "print_rawdata.h"
-//typedef struct emp *EmpPtr;
 
 /*
   This function accepts a pointer to emp(information of a employee)

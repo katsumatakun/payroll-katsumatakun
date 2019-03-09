@@ -1,11 +1,8 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "linked.h"
 #include "emp_rec.h"
 #include "insert.h"
-//typedef struct emp *EmpPtr;
-//typedef struct linked *nodeType;
 
 /*
   This function will accept a pointer of nodeType that is the head of a linked list
@@ -15,21 +12,25 @@
   alphabetical order.
 */
 void insertData(nodeType head, EmpPtr q){
-  //printf("aaaa %s\n", q->first_name);
-  nodeType p;
-  nodeType p3;
-  nodeType p2;
+  nodeType p;  //points to new node
+  nodeType p3; //points to one front node of new node
+  nodeType p2; //points to one behind node of new node
+
+  //In the case there is no item in the linked list
   if((head->ptr) == NULL){
     head->front = NULL;
     head->back = NULL;
     head->ptr = q;
-    //printf("insert first item %s\n", (head->ptr)->last_name);
   }
 
   else{
+    //dainamically allocation
     p = (nodeType) malloc(sizeof(struct linked));
     p->ptr = q;
     p2 = head;
+
+    //Finding insertion point
+    //1. last name 2. first name
     while(p2 != NULL && strcmp((p2->ptr)->last_name, (p->ptr)->last_name)<0){
       p3 = p2;
       p2 = p2->back;
@@ -38,22 +39,26 @@ void insertData(nodeType head, EmpPtr q){
       p3 = p2;
       p2 = p2->back;
     }
+
+
+    //insert the bery end of the linked list
     if(p2 == NULL){
-      //printf("insert %s after %s\n", p->ptr->last_name, p3->ptr->last_name);
       p3-> back = p;
       p-> back = NULL;
       p-> front = p3;
     }
 
+
+    //insert very first of the linked list
     else if (p3 == NULL){
-      //printf("inset %s before %s\n", p->ptr->last_name, p2->ptr->last_name);
       p2-> front = p;
       p->front = NULL;
       p->back  = p2;
     }
 
+
+    //insert between node pointed to by p3 and one pointed to by p2
     else{
-      //printf("insert %s between %s and %s\n",p->ptr->last_name, p3->ptr->last_name, p2->ptr->last_name );
       p3-> back = p;
       p2-> front = p;
       p->front = p3;

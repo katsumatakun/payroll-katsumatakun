@@ -12,4 +12,6 @@ struct emp {
   float total_medical;
   char status;
 };
+
+//define type of a pointer to struct emp 
 typedef struct emp *EmpPtr;

@@ -1,3 +1,4 @@
+#Makefile for the payroll reading and output program
 
 OBJ = main.o insert.o myprint.o print_rawdata.o
 STRUCTS = linked.h emp_rec.h
@@ -16,7 +17,7 @@ insert.o: insert.c insert.h $(STRUCTS)
 myprint.o: myprint.c myprint.h $(STRUCTS)
 	gcc -c myprint.c
 
-print_rawdata.o: print_rawdata.c print_rawdata.h $(STRUCTS)
+print_rawdata.o: print_rawdata.c print_rawdata.h emp_rec.h
 	gcc -c print_rawdata.c
 
 clean:
