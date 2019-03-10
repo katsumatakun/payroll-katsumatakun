@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 
   //Pirnt data it reads and put data into the linked list
   //with dainamically memory allocation.
-  //while successfully reading emp data, that is while end of the file
+  //while successfully reading emp data, that is, while end of the file
   int is_insertion_success;
   while(num_element == 1){
     print_raw_data(q);
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   //Delete each node of the linked list(deallocation)
   nodeType delete_ptr;
   while(head != NULL){
-    delet_ptr = head;
+    delete_ptr = head;
     head = head->back;
     free(delete_ptr);
     }
