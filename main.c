@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
   //Read the first data with checking
   //if could not read data, terminate the program
   int num_element;
-  num_element =fread(q, sizeof(struct emp), 1, fp);
+  num_element = fread(q, sizeof(struct emp), 1, fp);
   if(num_element != 1){
     printf("Reading data failed \n");
     free(q);
