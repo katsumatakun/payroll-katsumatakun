@@ -33,8 +33,9 @@ int main(int argc, char* argv[]) {
   (it makes it impossible to insert item in the very first)
   but what the pointer pointed by the head points to can be manipulated.
   */
-  nodeType* head;
-  *head = NULL;
+  struct linked head;
+  head.ptr = NULL;
+  nodeType sortedHead;
 
   //Allocate space for the first record while checking if there
   //is memory space.
@@ -59,17 +60,12 @@ int main(int argc, char* argv[]) {
   //Pirnt data it reads and puts data into the linked list
   //with dainamically memory allocation.
   //while successfully reading emp data, that is, while not end of the file
-  int is_insertion_success;
   while(num_element == 1){
     print_raw_data(q);
 
     //Insert data with dainamically allocation
-    is_insertion_success = insertData(head, q);
-    if(is_insertion_success == -1)
-    {
-      printf("No more memory space available \n");
-      return -1;
-    }
+    sortedHead = insertData(&head, q);
+    head = *sortedHead;
 
     //Allocate memory for the next record
     q = (EmpPtr) malloc(sizeof(struct emp));
@@ -87,17 +83,17 @@ int main(int argc, char* argv[]) {
   printf("========================================\n");
   printf("Calculated Bi-weekly Pays in Order\n\n");
   printf("Last name, First name  bi-weekly pay  federal tax  state tax  insurance     net pay \n");
-  print_emp_data(head);
+  print_emp_data(sortedHead);
 
   //Delete each node of the linked list(deallocation)
-  nodeType traveling_ptr;
-  nodeType delete_ptr;
-  traveling_ptr = *head;
-  head = NULL;
-  while(traveling_ptr != NULL){
-    delete_ptr = traveling_ptr;
-    traveling_ptr = traveling_ptr->back;
-    free(delete_ptr);
-    }
+
+  nodeType i = sortedHead;
+  while(sortedHead != NULL){
+    sortedHead = (sortedHead->back);
+    free(i->ptr);
+    free(i);
+    i = sortedHead;
+    printf("free\n" );
+  }
   return 0;
 }
