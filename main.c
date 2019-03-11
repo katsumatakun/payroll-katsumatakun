@@ -27,15 +27,9 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  /*
-  Create head pointer which points to the pointer to first node of the linked list.
-  What the head pointer points to cannot be manipulated in another function.
-  (it makes it impossible to insert item in the very first)
-  but what the pointer pointed by the head points to can be manipulated.
-  */
-  struct linked head;
-  head.ptr = NULL;
-  nodeType sortedHead;
+  struct linked head_node;
+  head_node.ptr = NULL;
+  nodeType head_ptr;
 
   //Allocate space for the first record while checking if there
   //is memory space.
@@ -57,15 +51,19 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  //Pirnt data it reads and puts data into the linked list
-  //with dainamically memory allocation.
-  //while successfully reading emp data, that is, while not end of the file
+  //while not EOF
   while(num_element == 1){
     print_raw_data(q);
 
     //Insert data with dainamically allocation
-    sortedHead = insertData(&head, q);
-    head = *sortedHead;
+    head_ptr = insertData(&head_node, q);
+    if(head_ptr == NULL){
+      printf("No more memory space available \n");
+      return -1;
+    }
+
+    //update head node
+    head_node = *head_ptr;
 
     //Allocate memory for the next record
     q = (EmpPtr) malloc(sizeof(struct emp));
@@ -79,21 +77,11 @@ int main(int argc, char* argv[]) {
 }
   free(q);  //deallocation for extra memory
 
-  //Print bi-weekly pay, taxes, insuarance, and net pay
   printf("========================================\n");
   printf("Calculated Bi-weekly Pays in Order\n\n");
   printf("Last name, First name  bi-weekly pay  federal tax  state tax  insurance     net pay \n");
-  print_emp_data(sortedHead);
+  print_emp_data(head_ptr);
 
-  //Delete each node of the linked list(deallocation)
 
-  nodeType i = sortedHead;
-  while(sortedHead != NULL){
-    sortedHead = (sortedHead->back);
-    free(i->ptr);
-    free(i);
-    i = sortedHead;
-    printf("free\n" );
-  }
   return 0;
 }
