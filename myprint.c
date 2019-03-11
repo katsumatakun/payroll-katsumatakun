@@ -11,9 +11,9 @@
   amount, and net pay in bi-weekly scale.
   It will also print each total.
 */
-void print_emp_data(nodeType* pt){
+void print_emp_data(nodeType pt){
 
-  nodeType iterator = *pt; //pointer to the first node
+  nodeType iterator = pt; //pointer to the first node
   float total_bi_weekly = 0;
   float total_fed_tax = 0;
   float total_state_tax = 0;
