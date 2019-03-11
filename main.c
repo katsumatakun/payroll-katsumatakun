@@ -27,13 +27,14 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  //Create head pointer to the first node of the linked list
-  nodeType head = NULL;
-  head = (nodeType) malloc(sizeof(struct linked));
-  if(head == NULL){
-    printf("No more memory space available \n");
-    return -1;
-  }
+  /*
+  Create head pointer which points to the pointer to first node of the linked list.
+  What the head pointer points to cannot be manipulated in another function.
+  (it makes it impossible to insert item in the very first)
+  but what the pointer pointed by the head points to can be manipulated.
+  */
+  nodeType* head;
+  *head = NULL;
 
   //Allocate space for the first record while checking if there
   //is memory space.
@@ -44,19 +45,20 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
+
   //Read the first data with checking
   //if could not read data, terminate the program
   int num_element;
   num_element = fread(q, sizeof(struct emp), 1, fp);
   if(num_element != 1){
     printf("Reading data failed \n");
-    free(q);
+    free(q);  // deallocation
     return -1;
   }
 
-  //Pirnt data it reads and put data into the linked list
+  //Pirnt data it reads and puts data into the linked list
   //with dainamically memory allocation.
-  //while successfully reading emp data, that is, while end of the file
+  //while successfully reading emp data, that is, while not end of the file
   int is_insertion_success;
   while(num_element == 1){
     print_raw_data(q);
@@ -79,19 +81,22 @@ int main(int argc, char* argv[]) {
     //Read the next data
     num_element =fread(q, sizeof(struct emp), 1, fp);
 }
-  free(q);
+  free(q);  //deallocation for extra memory
 
   //Print bi-weekly pay, taxes, insuarance, and net pay
   printf("========================================\n");
   printf("Calculated Bi-weekly Pays in Order\n\n");
-  printf("Last name, First name  bi-weekly pay  federal tax  state tax  insurance  net pay \n");
+  printf("Last name, First name  bi-weekly pay  federal tax  state tax  insurance     net pay \n");
   print_emp_data(head);
 
   //Delete each node of the linked list(deallocation)
+  nodeType traveling_ptr;
   nodeType delete_ptr;
-  while(head != NULL){
-    delete_ptr = head;
-    head = head->back;
+  traveling_ptr = *head;
+  head = NULL;
+  while(traveling_ptr != NULL){
+    delete_ptr = traveling_ptr;
+    traveling_ptr = traveling_ptr->back;
     free(delete_ptr);
     }
   return 0;
