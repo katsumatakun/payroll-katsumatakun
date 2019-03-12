@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "linked.h"
 #include "emp_rec.h"
-#include "myprint.h"
+#include "print_calculated.h"
 
 /*
   This function will accept head pointer
