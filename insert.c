@@ -15,54 +15,54 @@
 */
 
 nodeType insertData(nodeType head_ptr, EmpPtr q){
-  nodeType p;  //points to new node
-  nodeType p3; //points to one front node of new node
-  nodeType p2; //points to one behind node of new node
-  nodeType newHead = head_ptr; //pointer to be returned
+  nodeType new_node_p;  //points to new node
+  nodeType front_node_p; //points to one front node of new node
+  nodeType behind_node_p; //points to one behind node of new node
+  nodeType new_Head_p = head_ptr; //pointer to be returned
 
   //dainamically allocation
   //allocation failure will finish function execution with null return
-  p = (nodeType) malloc(sizeof(struct linked));
-  if(p == NULL){
-    newHead = NULL;
-    return newHead;
+  new_node_p = (nodeType) malloc(sizeof(struct linked));
+  if(new_node_p == NULL){
+    new_Head_p = NULL;
+    return new_Head_p;
   }
 
-  p->ptr = q;
-  p2 = head_ptr;
-  p3 = NULL;
+  new_node_p->ptr = q;
+  behind_node_p = head_ptr;
+  front_node_p = NULL;
 
   //Finding insertion point
   //1. last name 2. if laste name is the same, compare first name.
-  while(p2 != NULL && strcmp((p2->ptr)->last_name, (p->ptr)->last_name)<0){
-    p3 = p2;
-    p2 = p2->back;
+  while(behind_node_p != NULL && strcmp((behind_node_p->ptr)->last_name, (new_node_p->ptr)->last_name)<0){
+    front_node_p = behind_node_p;
+    behind_node_p = behind_node_p->back;
   }
-  while( p2 != NULL && strcmp((p2->ptr)->last_name, (p->ptr)->last_name) == 0 && strcmp((p2->ptr)->first_name, (p->ptr)-> first_name) < 0){
-    p3 = p2;
-    p2 = p2->back;
+  while( behind_node_p != NULL && strcmp((behind_node_p->ptr)->last_name, (new_node_p->ptr)->last_name) == 0 && strcmp((behind_node_p->ptr)->first_name, (new_node_p->ptr)-> first_name) < 0){
+    front_node_p = behind_node_p;
+    behind_node_p = behind_node_p->back;
   }
 
  //insert very first of the linked list
- if (p3 == NULL){
-    p->front = NULL;
-    p->back  = p2;
-    newHead = p;
-    if(p2 != NULL){
-      p2 -> front = p;
+ if (front_node_p == NULL){
+    new_node_p->front = NULL;
+    new_node_p->back  = behind_node_p;
+    new_Head_p = new_node_p;
+    if(behind_node_p != NULL){
+      behind_node_p -> front = new_node_p;
     }
   }
 
-  //insert between node pointed to by p3 and one pointed to by p2
-  //(or very end if p2 == NULL)
+  //insert between node pointed to by front_node_p and one pointed to by behind_node_p
+  //(or very end if behind_node_p == NULL)
   else{
-    p3-> back = p;
-    p->front = p3;
-    p->back = p2;
-    if(p2 != NULL){
-      p2-> front = p;
+    front_node_p-> back = new_node_p;
+    new_node_p->front = front_node_p;
+    new_node_p->back = behind_node_p;
+    if(behind_node_p != NULL){
+      behind_node_p-> front = new_node_p;
     }
 }
 
-  return newHead;
+  return new_Head_p;
 }
