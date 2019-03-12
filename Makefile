@@ -21,4 +21,4 @@ print_rawdata.o: print_rawdata.c print_rawdata.h emp_rec.h
 	gcc -c print_rawdata.c
 
 clean:
-	rm -rf main *.o
+	rm -rf payroll *.o
