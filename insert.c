@@ -20,8 +20,6 @@ nodeType insertData(nodeType head_ptr, EmpPtr q){
   nodeType p2; //points to one behind node of new node
   nodeType newHead = head_ptr; //pointer to be returned
 
-
-
   //dainamically allocation
   //allocation failure will finish function execution with null return
   p = (nodeType) malloc(sizeof(struct linked));
@@ -31,14 +29,6 @@ nodeType insertData(nodeType head_ptr, EmpPtr q){
   }
 
   p->ptr = q;
-
-  //if no item in the linked list
-  if(head_ptr ->ptr == NULL){
-      head_ptr ->ptr = p->ptr;
-      head_ptr ->front = NULL;
-      head_ptr ->back = NULL;
-    }
-  else{
   p2 = head_ptr;
   p3 = NULL;
 
@@ -55,10 +45,12 @@ nodeType insertData(nodeType head_ptr, EmpPtr q){
 
  //insert very first of the linked list
  if (p3 == NULL){
-    p2 -> front = p;
     p->front = NULL;
     p->back  = p2;
     newHead = p;
+    if(p2 != NULL){
+      p2 -> front = p;
+    }
   }
 
   //insert between node pointed to by p3 and one pointed to by p2
@@ -70,7 +62,6 @@ nodeType insertData(nodeType head_ptr, EmpPtr q){
     if(p2 != NULL){
       p2-> front = p;
     }
-  }
 }
 
   return newHead;

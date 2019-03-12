@@ -27,9 +27,7 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  struct linked head_node;
-  head_node.ptr = NULL;
-  nodeType head_ptr;
+  nodeType head_ptr = NULL;
 
   //Allocate space for the first record while checking if there
   //is memory space.
@@ -56,14 +54,11 @@ int main(int argc, char* argv[]) {
     print_raw_data(q);
 
     //Insert data with dainamically allocation
-    head_ptr = insertData(&head_node, q);
+    head_ptr = insertData(head_ptr, q);
     if(head_ptr == NULL){
       printf("No more memory space available \n");
       return -1;
     }
-
-    //update head node
-    head_node = *head_ptr;
 
     //Allocate memory for the next record
     q = (EmpPtr) malloc(sizeof(struct emp));

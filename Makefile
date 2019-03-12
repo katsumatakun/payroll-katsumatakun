@@ -1,15 +1,15 @@
 #Makefile for the payroll reading and output program
 
-OBJ = main.o insert.o myprint.o print_rawdata.o
+OBJ = payroll.o insert.o myprint.o print_rawdata.o
 STRUCTS = linked.h emp_rec.h
 HEADERS = insert.h myprint.h print_rawdata.h
-all: main
+all: payroll
 
-main: $(OBJ)
-	gcc -o main $(OBJ)
+payroll: $(OBJ)
+	gcc -o payroll $(OBJ)
 
-main.o: main.c $(STRUCTS) $(HEADERS)
-	gcc -c main.c
+payroll.o: payroll.c $(STRUCTS) $(HEADERS)
+	gcc -c payroll.c
 
 insert.o: insert.c insert.h $(STRUCTS)
 	gcc -c insert.c
