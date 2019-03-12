@@ -1,7 +1,7 @@
 #Makefile for the payroll reading and output program
 
 OBJ = payroll.o insert.o print_calculated.o print_rawdata.o
-STRUCTS = linked.h emp_rec.h
+STRUCTS = node.h emp_rec.h
 HEADERS = insert.h print_calculated.h print_rawdata.h
 all: payroll
 

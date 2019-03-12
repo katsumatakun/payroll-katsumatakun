@@ -1,19 +1,19 @@
 #include <stdio.h>
-#include "linked.h"
+#include "node.h"
 #include "emp_rec.h"
 #include "print_calculated.h"
 
 /*
   This function will accept head pointer
   pointing to the pointer to the first node
-  in the linked list and will print out
+  in the node list and will print out
   each employee's gross pay, taxes amount, medical insurance
   amount, and net pay in bi-weekly scale.
   It will also print each total.
 */
-void print_emp_data(nodeType pt){
+void print_emp_data(nodePtr pt){
 
-  nodeType iterator = pt; //pointer to the first node
+  nodePtr iterator = pt; //pointer to the first node
   float total_bi_weekly = 0;
   float total_fed_tax = 0;
   float total_state_tax = 0;
