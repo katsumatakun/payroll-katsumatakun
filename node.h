@@ -1,6 +1,6 @@
 /*
   Defining each node and a pointer to the nodes
-  of node list
+  of Linked list
 */
 
 struct node {

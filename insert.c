@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "linked.h"
+#include "node.h"
 #include "emp_rec.h"
 #include "insert.h"
 
@@ -14,15 +14,14 @@
   Finally return the pointer to the new head node after sorting.
 */
 
-nodeType insertData(nodeType head_ptr, EmpPtr q){
-  nodeType new_node_p;  //points to new node
-  nodeType front_node_p; //points to one front node of new node
-  nodeType behind_node_p; //points to one behind node of new node
-  nodeType new_Head_p = head_ptr; //pointer to be returned
+nodePtr insertData(nodePtr head_ptr, EmpPtr q){
+  nodePtr new_node_p;
+  nodePtr front_node_p;
+  nodePtr behind_node_p;
+  nodePtr new_Head_p = head_ptr;
 
-  //dainamically allocation
   //allocation failure will finish function execution with null return
-  new_node_p = (nodeType) malloc(sizeof(struct linked));
+  new_node_p = (nodePtr) malloc(sizeof(struct node));
   if(new_node_p == NULL){
     new_Head_p = NULL;
     return new_Head_p;

@@ -1,3 +1,3 @@
 //header file for insert.c
 
-nodeType insertData(nodeType, EmpPtr);
+nodePtr insertData(nodePtr, EmpPtr);
